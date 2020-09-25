@@ -1,8 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-function SEO({ lang, title }) {
+interface Props {
+    description?: string;
+    lang?: string;
+    meta?: [];
+    title: string;
+}
+
+const SEO = ({ lang, title }: Props) => {
     return (
         <Helmet
             htmlAttributes={{
@@ -12,15 +18,10 @@ function SEO({ lang, title }) {
             titleTemplate={`%s | Julian Memai`}
         />
     );
-}
+};
 
 SEO.defaultProps = {
     lang: `en`,
-};
-
-SEO.propTypes = {
-    lang: PropTypes.string,
-    title: PropTypes.string.isRequired,
 };
 
 export default SEO;

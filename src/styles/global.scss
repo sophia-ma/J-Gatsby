@@ -1,5 +1,5 @@
 html {
-    background-color: black;
+    background-color: white;
 }
 
 .logo-container {
@@ -9,7 +9,7 @@ html {
     justify-content: space-evenly;
     min-height: 100vh;
     cursor: pointer;
-    text-decoration: none;
+    user-select: none;
 
     .logo {
         height: 60vh;

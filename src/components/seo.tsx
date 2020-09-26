@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { PageProps, graphql, useStaticQuery } from 'gatsby';
 
 interface Props {
     description?: string;
@@ -8,14 +9,28 @@ interface Props {
     title: string;
 }
 
+interface DataProps {
+    contentfulUser: {
+        name: string;
+    };
+}
+
 const SEO = ({ lang, title }: Props) => {
+    const data: DataProps = useStaticQuery(graphql`
+        query MyQuery {
+            contentfulUser(owner: { eq: true }) {
+                name
+            }
+        }
+    `);
+
     return (
         <Helmet
             htmlAttributes={{
                 lang,
             }}
             title={title}
-            titleTemplate={`%s | Julian Memai`}
+            titleTemplate={`%s | ${data.contentfulUser.name}`}
         />
     );
 };

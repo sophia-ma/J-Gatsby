@@ -1,5 +1,5 @@
 import React from 'react';
-import './logo-container.scss';
+import './LogoContainer.scss';
 
 interface Props {
     children: any;

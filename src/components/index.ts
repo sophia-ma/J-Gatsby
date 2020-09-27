@@ -1,4 +1,6 @@
-export { default as SEO } from './seo/seo';
-export { default as Logo } from './logo/logo';
-export { default as LogoContainer } from './logo-container/logo-container';
-export { default as IntroContainer } from './intro-container/intro-container';
+export { default as SEO } from './Seo/Seo';
+export { default as Logo } from './Logo/Logo';
+export { default as NavBar } from './Navbar/Navbar';
+export { default as Layout } from './Layout/Layout';
+export { default as LogoContainer } from './LogoContainer/LogoContainer';
+export { default as IntroContainer } from './IntroContainer/IntroContainer';

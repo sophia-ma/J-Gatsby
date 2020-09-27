@@ -41,5 +41,6 @@ module.exports = {
                 downloadLocal: true,
             },
         },
+        `gatsby-plugin-styled-components`,
     ],
 };

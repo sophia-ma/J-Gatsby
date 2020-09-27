@@ -1,13 +1,13 @@
 import React from 'react';
-import { LogoContainer, Logo, SEO } from '../components';
+import { IntroContainer, LogoContainer, Logo, SEO } from '../components';
 
 const Index = () => (
-    <LogoContainer>
+    <IntroContainer>
         <SEO title="Intro" />
-        <div className="logo-container">
+        <LogoContainer>
             <Logo />
-        </div>
-    </LogoContainer>
+        </LogoContainer>
+    </IntroContainer>
 );
 
 export default Index;

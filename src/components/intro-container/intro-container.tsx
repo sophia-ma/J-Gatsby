@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { navigate } from 'gatsby';
-import './logo-container.scss';
+import './intro-container.scss';
 
 interface Props {
     children: any;
@@ -11,13 +11,14 @@ const goTo = () => {
     navigate('/about-me');
 };
 
-const LogoContainer = ({ children }: Props) => {
+const IntroContainer = ({ children }: Props) => {
     return (
         <a
             href="#"
             onClick={goTo}
             style={{
                 textDecoration: `none`,
+                animation: `fadein 2s`,
             }}
         >
             <Helmet htmlAttributes={{ class: 'intro-page' }} />
@@ -26,4 +27,4 @@ const LogoContainer = ({ children }: Props) => {
     );
 };
 
-export default LogoContainer;
+export default IntroContainer;

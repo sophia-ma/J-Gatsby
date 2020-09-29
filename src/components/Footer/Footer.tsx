@@ -28,23 +28,8 @@ const Copyright = styled.div`
 
 const Footer = () => {
     const data: DataProps = useStaticQuery(graphql`
-        query {
-            owner: {
-                contentfulUser(owner: { eq: true }) {
-                    name
-                }
-            }
-            developer: {
-                contentfulUser(developer: { eq: true }) {
-                    name
-                }
-            }
-        }
-    `);
-
-    const developerData: DataProps = useStaticQuery(graphql`
         {
-            contentfulUser(developer: { eq: true }) {
+            contentfulUser(owner: { eq: true }) {
                 name
             }
         }
@@ -53,7 +38,7 @@ const Footer = () => {
     return (
         <FooterContainer>
             <Copyright>
-                Copyright © {new Date().getFullYear()} {data.owner.contentfulUser.name}.{' '}
+                Copyright © {new Date().getFullYear()} {data.contentfulUser.name}.{' '}
             </Copyright>
         </FooterContainer>
     );

@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import './Layout.scss';
 
@@ -8,10 +9,11 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
     return (
-        <>
+        <div style={{ position: `relative` }}>
             <Navbar />
-            <main>{children}</main>
-        </>
+            <main className="main-section">{children}</main>
+            <Footer />
+        </div>
     );
 };
 

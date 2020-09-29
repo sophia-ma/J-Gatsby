@@ -3,3 +3,35 @@
 html {
     background: $background-colour;
 }
+
+%section-align {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.divider {
+    height: 50px;
+    margin-bottom: 50px;
+
+    @include respond-to(lg) {
+        height: 45px;
+        margin-bottom: 45px;
+    }
+
+    @include respond-to(md) {
+        height: 40px;
+        margin-bottom: 40px;
+    }
+
+    @include respond-to(sm) {
+        height: 35px;
+        margin-bottom: 35px;
+    }
+
+    @include respond-to(xs) {
+        height: 35px;
+        margin-bottom: 30px;
+    }
+}

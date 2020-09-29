@@ -4,3 +4,38 @@
     padding: 0;
     font-family: Helvetica;
 }
+
+.main-section {
+    @extend %section-align;
+    background: $section-colour;
+    color: $section-colour-text;
+    text-align: justify;
+    width: 100%;
+    line-height: 30px;
+    padding: 60px 150px;
+}
+
+@include respond-to(lg) {
+    .main-section {
+        padding: 50px 120px;
+    }
+}
+
+@include respond-to(md) {
+    .main-section {
+        padding: 40px 100px;
+    }
+}
+
+@include respond-to(sm) {
+    .main-section {
+        line-height: 25px;
+        padding: 35px 80px;
+    }
+}
+
+@include respond-to(xs) {
+    .main-section {
+        padding: 30px 50px;
+    }
+}

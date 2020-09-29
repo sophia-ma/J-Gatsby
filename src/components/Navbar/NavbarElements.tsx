@@ -107,7 +107,7 @@ export const NavMenu = styled.ul`
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: 100vh;
+        height: ${({ $click }) => ($click ? '100vh' : 'inherit')};
         position: absolute;
         top: ${({ $click }) => ($click ? '100%' : '-1000px')};
         left: 0;

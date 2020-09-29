@@ -6,7 +6,7 @@ interface Props {
 }
 
 const goTo = () => {
-    navigate('/AboutMe');
+    navigate('/Home');
 };
 
 const IntroContainer = ({ children }: Props) => {

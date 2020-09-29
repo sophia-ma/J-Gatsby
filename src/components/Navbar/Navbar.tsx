@@ -36,9 +36,9 @@ const Navbar = () => {
                         </ul>
                     </MobileContainer>
 
-                    <NavMenu onClick={toggleClick} $click={click}>
+                    <NavMenu onClick={click ? toggleClick : () => {}} $click={click}>
                         <NavItem>
-                            <NavLinks to="/">About me</NavLinks>
+                            <NavLinks to="#about-me">About me</NavLinks>
                         </NavItem>
 
                         <NavItem>

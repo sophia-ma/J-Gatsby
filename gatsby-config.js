@@ -32,7 +32,12 @@ module.exports = {
                 icon: `src/images/logo.png`,
             },
         },
-        `gatsby-plugin-sass`,
+        {
+            resolve: 'gatsby-plugin-sass',
+            options: {
+              data: `@import "${__dirname}/src/styles/styles";`,
+            }
+          },
         {
             resolve: `gatsby-source-contentful`,
             options: {

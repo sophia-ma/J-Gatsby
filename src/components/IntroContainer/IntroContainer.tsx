@@ -1,7 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { navigate } from 'gatsby';
-import './IntroContainer.scss';
 
 interface Props {
     children: any;
@@ -13,15 +11,7 @@ const goTo = () => {
 
 const IntroContainer = ({ children }: Props) => {
     return (
-        <a
-            href="#"
-            onClick={goTo}
-            style={{
-                textDecoration: `none`,
-
-            }}
-        >
-            <Helmet htmlAttributes={{ class: 'intro-page' }} />
+        <a href="#" onClick={goTo} style={{ textDecoration: `none` }}>
             <section>{children}</section>
         </a>
     );

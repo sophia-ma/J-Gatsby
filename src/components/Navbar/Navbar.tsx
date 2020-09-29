@@ -20,23 +20,23 @@ const Navbar = () => {
 
     return (
         <IconContext.Provider value={{ color: '#d0b88d' }}>
-            <Nav click={click}>
-                <NavBarContainer click={click}>
-                    <MobileContainer onClick={toggleClick} click={click}>
+            <Nav>
+                <NavBarContainer $click={click}>
+                    <MobileContainer onClick={toggleClick} $click={click}>
                         {click ? <FaTimes /> : <FaBars />}
 
-                        <NavLogo to="/" click={click}>
+                        <NavLogo to="/" $click={click}>
                             <NavIcon src={LogoImage} />
                         </NavLogo>
 
                         <ul>
-                            <NavLinks to="/" click={click}>
+                            <NavLinks to="/" $click={click}>
                                 Contact
                             </NavLinks>
                         </ul>
                     </MobileContainer>
 
-                    <NavMenu onClick={toggleClick} click={click}>
+                    <NavMenu onClick={toggleClick} $click={click}>
                         <NavItem>
                             <NavLinks to="/">About me</NavLinks>
                         </NavItem>
@@ -46,7 +46,7 @@ const Navbar = () => {
                         </NavItem>
 
                         <NavItem>
-                            <NavLogo to="/" click={click}>
+                            <NavLogo to="/" $click={click}>
                                 <NavIcon src={LogoImage} />
                             </NavLogo>
                         </NavItem>

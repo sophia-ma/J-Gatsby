@@ -1,19 +1,15 @@
 import React from 'react';
-import { navigate } from 'gatsby';
+import { Link } from 'gatsby';
 
 interface Props {
     children: any;
 }
 
-const goTo = () => {
-    navigate('/Home');
-};
-
 const IntroContainer = ({ children }: Props) => {
     return (
-        <a href="#" onClick={goTo} style={{ textDecoration: `none` }}>
+        <Link to="/Home">
             <section>{children}</section>
-        </a>
+        </Link>
     );
 };
 

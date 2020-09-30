@@ -15,8 +15,17 @@ import LogoImage from 'images/logo.png';
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
-
     const toggleClick = () => setClick(!click);
+
+    const scrollToElement = require('scroll-to-element');
+
+    const handleLinkClick = ({ e, target }: { e: any; target: string }) => {
+        if (typeof window !== 'undefined' && target.includes('#')) {
+            e?.preventDefault();
+
+            scrollToElement(target, { offset: -190 });
+        }
+    };
 
     return (
         <IconContext.Provider value={{ color: '#d0b88d' }}>
@@ -38,7 +47,12 @@ const Navbar = () => {
 
                     <NavMenu onClick={click ? toggleClick : () => {}} $click={click}>
                         <NavItem>
-                            <NavLinks to="#about-me">About me</NavLinks>
+                            <NavLinks
+                                to="#about-me"
+                                onClick={e => handleLinkClick({ e, target: '#about-me' })}
+                            >
+                                About me
+                            </NavLinks>
                         </NavItem>
 
                         <NavItem>

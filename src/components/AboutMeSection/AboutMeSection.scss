@@ -12,50 +12,50 @@
         margin-top: 8px;
         font-size: 18px;
     }
-}
 
-@include respond-to(lg) {
-    .heading {
-        font-size: 20px;
-        margin: 50px 0 25px;
+    @include respond-to(lg) {
+        .heading {
+            font-size: 20px;
+            margin: 50px 0 25px;
+        }
+
+        .content {
+            font-size: 16px;
+        }
     }
 
-    .content {
-        font-size: 16px;
-    }
-}
+    @include respond-to(md) {
+        .heading {
+            font-size: 19px;
+            margin: 40px 0 20px;
+        }
 
-@include respond-to(md) {
-    .heading {
-        font-size: 19px;
-        margin: 40px 0 20px;
-    }
-
-    .content {
-        font-size: 15px;
-    }
-}
-
-@include respond-to(sm) {
-    .heading {
-        font-size: 18px;
-        margin: 30px 0 15px;
-        letter-spacing: 2px;
+        .content {
+            font-size: 15px;
+        }
     }
 
-    .content {
-        font-size: 14px;
-    }
-}
+    @include respond-to(sm) {
+        .heading {
+            font-size: 18px;
+            margin: 30px 0 15px;
+            letter-spacing: 2px;
+        }
 
-@include respond-to(xs) {
-    .heading {
-        font-size: 17px;
-        margin: 25px 0 15px;
-        letter-spacing: 2px;
+        .content {
+            font-size: 14px;
+        }
     }
 
-    .content {
-        font-size: 13px;
+    @include respond-to(xs) {
+        .heading {
+            font-size: 17px;
+            margin: 25px 0 15px;
+            letter-spacing: 2px;
+        }
+
+        .content {
+            font-size: 13px;
+        }
     }
 }

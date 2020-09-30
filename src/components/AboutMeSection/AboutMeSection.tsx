@@ -7,6 +7,7 @@ const AboutMeSection = () => {
         <div id="about-me" className="about-me-container">
             <h1 className="heading">About me</h1>
             <img src={Divider} alt="divider" className="divider" />
+
             <p className="content">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent malesuada augue
                 neque, id hendrerit lacus accumsan id. Suspendisse potenti. Nam ut ligula at felis

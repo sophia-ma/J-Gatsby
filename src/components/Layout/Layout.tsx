@@ -13,11 +13,11 @@ if (typeof window !== 'undefined') {
 
 const Layout = ({ children }: Props) => {
     return (
-        <div style={{ position: `relative` }}>
+        <>
             <Navbar />
             <main className="main-section">{children}</main>
             <Footer />
-        </div>
+        </>
     );
 };
 

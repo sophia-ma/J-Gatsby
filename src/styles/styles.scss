@@ -4,6 +4,18 @@ html {
     background: $background-colour;
 }
 
+body {
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+body::after {
+    content: '';
+    display: block;
+    height: $footer-height;
+}
+
 %section-align {
     display: flex;
     flex-direction: column;

@@ -1,0 +1,33 @@
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $background-colour;
+    color: $basic-colour;
+    width: 100%;
+    height: $footer-height;
+    z-index: 999;
+    user-select: none;
+    padding: 0 50px;
+    font-size: 13px;
+    position: absolute;
+    bottom: 0;
+
+    @include respond-to(lg) {
+        padding: 0 40px;
+    }
+
+    @include respond-to(md) {
+        padding: 0 30px;
+    }
+
+    @include respond-to(sm) {
+        padding: 0 20px;
+        font-size: 12px;
+    }
+
+    @include respond-to(xs) {
+        padding: 0 15px;
+        font-size: 10px;
+    }
+}

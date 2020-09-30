@@ -1,46 +1,41 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
-import styled from 'styled-components';
-import { variables } from '../../styles/tokens';
+import './Footer.scss';
 
 interface DataProps {
-    contentfulUser: {
-        name: string;
+    allContentfulUser: {
+        nodes: [
+            {
+                name: string;
+                owner: boolean;
+                developer: boolean;
+            },
+        ];
     };
 }
-
-const FooterContainer = styled.footer`
-    display: flex;
-    background: ${variables.backgroundColour};
-    color: #d0b88d;
-    position: absolute;
-    width: 100%;
-    height: 80px;
-    z-index: 999;
-    user-select: none;
-`;
-
-const Copyright = styled.div`
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-`;
 
 const Footer = () => {
     const data: DataProps = useStaticQuery(graphql`
         {
-            contentfulUser(owner: { eq: true }) {
-                name
+            allContentfulUser {
+                nodes {
+                    name
+                    owner
+                    developer
+                }
             }
         }
     `);
+    const owner = data.allContentfulUser.nodes.find(x => x.owner);
+    const developer = data.allContentfulUser.nodes.find(x => x.developer);
 
     return (
-        <FooterContainer>
-            <Copyright>
-                Copyright © {new Date().getFullYear()} {data.contentfulUser.name}.{' '}
-            </Copyright>
-        </FooterContainer>
+        <div className="footer-container">
+            <span>
+                Copyright © {new Date().getFullYear()} {owner?.name}.
+            </span>
+            <span>Developed by {developer?.name}</span>
+        </div>
     );
 };
 

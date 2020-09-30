@@ -12,6 +12,7 @@ import {
     NavMenu,
 } from './NavbarElements';
 import LogoImage from 'images/logo.png';
+import { variables } from '../../styles/tokens';
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
@@ -28,7 +29,7 @@ const Navbar = () => {
     };
 
     return (
-        <IconContext.Provider value={{ color: '#d0b88d' }}>
+        <IconContext.Provider value={{ color: variables.basicColour }}>
             <Nav>
                 <NavBarContainer $click={click}>
                     <MobileContainer onClick={toggleClick} $click={click}>

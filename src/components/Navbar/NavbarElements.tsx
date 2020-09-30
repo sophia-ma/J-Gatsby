@@ -125,7 +125,7 @@ export const NavItem = styled.li`
 export const NavLinks = styled(Link)`
     display: flex;
     align-items: center;
-    color: #d0b88d;
+    color: ${variables.basicColour};
     font-size: 1rem;
     text-decoration: none;
     padding: 0.5rem 1rem;

@@ -57,7 +57,12 @@ const Navbar = () => {
                         </NavItem>
 
                         <NavItem>
-                            <NavLinks to="/">Tattoos</NavLinks>
+                            <NavLinks
+                                to="#tattoos"
+                                onClick={e => handleLinkClick({ e, target: '#tattoos' })}
+                            >
+                                Tattoos
+                            </NavLinks>
                         </NavItem>
 
                         <NavItem>
@@ -67,7 +72,12 @@ const Navbar = () => {
                         </NavItem>
 
                         <NavItem>
-                            <NavLinks to="/">Haircuts</NavLinks>
+                            <NavLinks
+                                to="#haircuts"
+                                onClick={e => handleLinkClick({ e, target: '#haircuts' })}
+                            >
+                                Haircuts
+                            </NavLinks>
                         </NavItem>
 
                         <NavItem>

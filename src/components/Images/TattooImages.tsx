@@ -37,7 +37,7 @@ const TatooImages = () => {
     `);
 
     return (
-        <div className="image-container">
+        <div id="tattoos" className="image-container">
             <h1 className="heading">Tattoos</h1>
             <img src={Divider} alt="divider" className="divider" />
 

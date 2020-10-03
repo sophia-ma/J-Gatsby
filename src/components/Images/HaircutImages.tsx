@@ -37,7 +37,7 @@ const HaircutImages = () => {
     `);
 
     return (
-        <div className="image-container">
+        <div id="haircuts" className="image-container">
             <h1 className="heading">Haircuts</h1>
             <img src={Divider} alt="divider" className="divider" />
 

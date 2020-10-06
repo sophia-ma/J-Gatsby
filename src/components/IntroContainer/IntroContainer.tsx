@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-interface Props {
+type Props = {
     children: any;
-}
+};
 
-const IntroContainer = ({ children }: Props) => {
+const IntroContainer: React.FC<Props> = ({ children }) => {
     return (
         <Link to="/Home">
             <section>{children}</section>

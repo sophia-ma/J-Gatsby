@@ -3,15 +3,15 @@ import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import './Layout.scss';
 
-interface Props {
+type Props = {
     children?: any;
-}
+};
 
 if (typeof window !== 'undefined') {
     require('smooth-scroll')('a[href*="#"]');
 }
 
-const Layout = ({ children }: Props) => {
+const Layout: React.FC<Props> = ({ children }) => {
     return (
         <>
             <Navbar />

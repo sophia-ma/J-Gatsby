@@ -20,13 +20,13 @@ interface DataProps {
     };
 }
 
-const TatooImages = () => {
+const TatooImages: React.FC = () => {
     const data: DataProps = useStaticQuery(graphql`
         query {
             allContentfulAsset(filter: { file: { fileName: { regex: "/tattooer/" } } }) {
                 edges {
                     node {
-                        fluid(maxHeight: 600, maxWidth: 600) {
+                        fluid(maxHeight: 700, maxWidth: 700) {
                             ...GatsbyContentfulFluid
                         }
                         title

@@ -20,13 +20,13 @@ interface DataProps {
     };
 }
 
-const HaircutImages = () => {
+const HaircutImages: React.FC = () => {
     const data: DataProps = useStaticQuery(graphql`
         query {
             allContentfulAsset(filter: { file: { fileName: { regex: "/barber/" } } }) {
                 edges {
                     node {
-                        fluid(maxHeight: 600, maxWidth: 600) {
+                        fluid(maxHeight: 700, maxWidth: 700) {
                             ...GatsbyContentfulFluid
                         }
                         title

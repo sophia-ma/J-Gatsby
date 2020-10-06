@@ -1,11 +1,11 @@
 import React from 'react';
 import './LogoContainer.scss';
 
-interface Props {
+type Props = {
     children: any;
-}
+};
 
-const LogoContainer = ({ children }: Props) => {
+const LogoContainer: React.FC<Props> = ({ children }) => {
     return (
         <div className="logo-container">
             <section>{children}</section>

@@ -14,7 +14,7 @@ import {
 import LogoImage from 'images/logo.png';
 import { variables } from '../../styles/tokens';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
     const [click, setClick] = useState(false);
     const toggleClick = () => setClick(!click);
 

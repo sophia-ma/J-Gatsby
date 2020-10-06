@@ -2,12 +2,10 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql, useStaticQuery } from 'gatsby';
 
-interface Props {
-    description?: string;
+type Props = {
     lang?: string;
-    meta?: [];
     title: string;
-}
+};
 
 interface DataProps {
     contentfulUser: {
@@ -15,9 +13,9 @@ interface DataProps {
     };
 }
 
-const SEO = ({ lang, title }: Props) => {
+const SEO: React.FC<Props> = ({ lang, title }) => {
     const data: DataProps = useStaticQuery(graphql`
-        query MyQuery {
+        query {
             contentfulUser(owner: { eq: true }) {
                 name
             }

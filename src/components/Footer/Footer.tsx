@@ -14,7 +14,7 @@ interface DataProps {
     };
 }
 
-const Footer = () => {
+const Footer: React.FC = () => {
     const data: DataProps = useStaticQuery(graphql`
         {
             allContentfulUser {

@@ -2,7 +2,7 @@ import React from 'react';
 import Divider from 'images/divider.png';
 import './AboutMeSection.scss';
 
-const AboutMeSection = () => {
+const AboutMeSection: React.FC = () => {
     return (
         <div id="about-me" className="about-me-container">
             <h1 className="heading">About me</h1>

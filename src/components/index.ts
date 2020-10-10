@@ -6,4 +6,5 @@ export { default as Footer } from './Footer/Footer';
 export { default as AboutMe } from './AboutMe/AboutMe';
 export { default as TatooImages } from './Images/TattooImages';
 export { default as HaircutImages } from './Images/HaircutImages';
+export { default as ContactForm } from './ContactForm/ContactForm';
 export { default as IntroContainer } from './IntroContainer/IntroContainer';

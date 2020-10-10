@@ -40,7 +40,11 @@ const Navbar: React.FC = () => {
                         </NavLogo>
 
                         <ul>
-                            <NavLinks to="/" $click={click}>
+                            <NavLinks
+                                to="#contact-form"
+                                $click={click}
+                                onClick={e => handleLinkClick({ e, target: '#contact-form' })}
+                            >
                                 Contact
                             </NavLinks>
                         </ul>
@@ -81,7 +85,12 @@ const Navbar: React.FC = () => {
                         </NavItem>
 
                         <NavItem>
-                            <NavLinks to="/">Contact</NavLinks>
+                            <NavLinks
+                                to="#contact-form"
+                                onClick={e => handleLinkClick({ e, target: '#contact-form' })}
+                            >
+                                Contact
+                            </NavLinks>
                         </NavItem>
                     </NavMenu>
                 </NavBarContainer>

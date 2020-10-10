@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, SEO, AboutMe, TatooImages, HaircutImages } from '../components';
+import { Layout, SEO, AboutMe, TatooImages, HaircutImages, ContactForm } from '../components';
 
 const Home = () => (
     <Layout>
@@ -7,6 +7,7 @@ const Home = () => (
         <AboutMe />
         <TatooImages />
         <HaircutImages />
+        <ContactForm />
     </Layout>
 );
 

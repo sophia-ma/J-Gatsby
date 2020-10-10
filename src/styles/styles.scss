@@ -19,7 +19,6 @@ body::after {
 %section-align {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
     padding-bottom: 50px;
 }
@@ -88,4 +87,8 @@ body::after {
             margin-bottom: 30px;
         }
     }
+}
+
+%section-content-max-width {
+    max-width: 935px;
 }

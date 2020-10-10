@@ -8,23 +8,13 @@
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: minmax(50px, auto);
         margin: 0 auto;
-        grid-gap: 9px;
+        grid-gap: 28px;
         width: 100%;
-
-        @include respond-to(lg) {
-            grid-gap: 7px;
-        }
-
-        @include respond-to(md) {
-            grid-gap: 5px;
-        }
+        @extend %section-content-max-width;
 
         @include respond-to(sm) {
             grid-gap: 3px;
-        }
-
-        @include respond-to(xs) {
-            grid-gap: 1px;
+            width: 100%;
         }
 
         & img:hover {

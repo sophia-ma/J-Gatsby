@@ -35,15 +35,23 @@ module.exports = {
         {
             resolve: 'gatsby-plugin-sass',
             options: {
-              data: `@import "${__dirname}/src/styles/styles";`,
-            }
-          },
+                data: `@import "${__dirname}/src/styles/styles";`,
+            },
+        },
         {
             resolve: `gatsby-source-contentful`,
             options: {
                 spaceId: `${process.env.CONTENTFUL_SPACE_ID}`,
                 accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
                 downloadLocal: true,
+            },
+        },
+        {
+            resolve: `gatsby-plugin-material-ui`,
+            options: {
+                stylesProvider: {
+                    injectFirst: true,
+                },
             },
         },
         `gatsby-plugin-styled-components`,

@@ -1,6 +1,7 @@
-import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
+import React, { useState } from 'react';
 import Img from 'gatsby-image';
+import ImageDialog from './Dialog/Dialog';
 import Divider from 'images/divider.png';
 import './Images.scss';
 
@@ -26,7 +27,7 @@ const TatooImages: React.FC = () => {
             allContentfulAsset(filter: { file: { fileName: { regex: "/tattooer/" } } }) {
                 edges {
                     node {
-                        fluid(maxHeight: 700, maxWidth: 700) {
+                        fluid {
                             ...GatsbyContentfulFluid
                         }
                         title
@@ -36,6 +37,12 @@ const TatooImages: React.FC = () => {
         }
     `);
 
+    const [showDialog, setShowDialog] = useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const open = () => setShowDialog(true);
+    const close = () => setShowDialog(false);
+
     return (
         <div id="tattoos" className="image-container">
             <h1 className="heading">Tattoos</h1>
@@ -43,14 +50,25 @@ const TatooImages: React.FC = () => {
 
             <div className="image-grid">
                 {data.allContentfulAsset.edges.map((image: any, key: number) => (
-                    <Img
+                    <div
                         key={key}
-                        className="image-item"
-                        fluid={image.node.fluid}
-                        alt={image.node.title}
-                    />
+                        onClick={() => {
+                            setSelectedImage(image);
+                            open();
+                        }}
+                    >
+                        <Img
+                            key={key}
+                            fluid={{ ...image.node.fluid, aspectRatio: 1 }}
+                            alt={image.node.title}
+                        />
+                    </div>
                 ))}
             </div>
+
+            {showDialog && (
+                <ImageDialog selectedValue={selectedImage} open={showDialog} close={close} />
+            )}
         </div>
     );
 };

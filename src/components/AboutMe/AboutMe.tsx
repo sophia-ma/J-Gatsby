@@ -1,8 +1,8 @@
 import React from 'react';
 import Divider from 'images/divider.png';
-import './AboutMeSection.scss';
+import './AboutMe.scss';
 
-const AboutMeSection: React.FC = () => {
+const AboutMe: React.FC = () => {
     return (
         <div id="about-me" className="about-me-container">
             <h1 className="heading">About me</h1>
@@ -22,4 +22,4 @@ const AboutMeSection: React.FC = () => {
     );
 };
 
-export default AboutMeSection;
+export default AboutMe;

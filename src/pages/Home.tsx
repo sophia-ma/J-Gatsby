@@ -1,10 +1,10 @@
 import React from 'react';
-import { Layout, SEO, AboutMeSection, TatooImages, HaircutImages } from '../components';
+import { Layout, SEO, AboutMe, TatooImages, HaircutImages } from '../components';
 
 const Home = () => (
     <Layout>
         <SEO title="Home" />
-        <AboutMeSection />
+        <AboutMe />
         <TatooImages />
         <HaircutImages />
     </Layout>

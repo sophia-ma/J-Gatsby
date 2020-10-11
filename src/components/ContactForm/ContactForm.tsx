@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Button,
     createMuiTheme,
@@ -9,6 +9,7 @@ import {
     ThemeProvider,
 } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
+import Alert from '@material-ui/lab/Alert';
 import { useForm } from 'react-hook-form';
 import { variables } from '../../styles/tokens';
 import Divider from 'images/divider.png';
@@ -49,12 +50,41 @@ const theme = createMuiTheme({
     },
 });
 
+const encode = (data: any) => {
+    console.log('data', data);
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+};
+
 const ContactForm: React.FC = () => {
     const classes = useStyles();
-    const { register, handleSubmit, errors } = useForm<FormData>();
-    const onSubmit = (data: FormData) => console.log(data);
+    const { register, handleSubmit, errors, reset } = useForm<FormData>();
+
+    const [state, setState] = useState({});
+    const [feedbackMsg, setFeedbackMsg] = useState('');
+
+    const handleChange = (e: any) => setState({ ...state, [e.target.name]: e.target.value });
 
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+    const onSubmit = (data: FormData, e: any) => {
+        e.preventDefault();
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: encode({ 'form-name': 'contact', ...state }),
+        })
+            .then(response => {
+                setFeedbackMsg(`Thanks for reaching out. I'll get back to you soon.`);
+                reset();
+                console.log(response);
+            })
+            .catch(error => {
+                setFeedbackMsg('Oops, something went wrong. The form could not be submitted.');
+                console.log(error);
+            });
+    };
 
     return (
         <div id="contact-form" className="contact-form-container">
@@ -73,6 +103,8 @@ const ContactForm: React.FC = () => {
                     color="primary"
                     onSubmit={handleSubmit(onSubmit)}
                 >
+                    {feedbackMsg && <Alert severity="success">{feedbackMsg}</Alert>}
+
                     <input type="hidden" name="form-name" value="contact" />
                     <TextField
                         id="name"
@@ -83,6 +115,7 @@ const ContactForm: React.FC = () => {
                         required
                         fullWidth
                         inputRef={register({ required: true })}
+                        onChange={handleChange}
                         helperText={!!errors.name && 'Please enter your name'}
                         error={!!errors.name}
                     />
@@ -96,6 +129,7 @@ const ContactForm: React.FC = () => {
                         fullWidth
                         margin="normal"
                         inputRef={register({ required: true, pattern: emailRegex })}
+                        onChange={handleChange}
                         helperText={
                             !!errors.email &&
                             ((errors.email?.type === 'required' &&
@@ -125,6 +159,7 @@ const ContactForm: React.FC = () => {
                         multiline
                         rows={8}
                         inputRef={register({ required: true })}
+                        onChange={handleChange}
                         helperText={!!errors.message && 'Please enter your message'}
                         error={!!errors.message}
                     />

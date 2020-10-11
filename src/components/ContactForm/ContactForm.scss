@@ -2,4 +2,8 @@
     @extend %section-align;
     @extend %section-heading;
     @extend %section-divider;
+
+    form {
+        @extend %section-content-max-width;
+    }
 }

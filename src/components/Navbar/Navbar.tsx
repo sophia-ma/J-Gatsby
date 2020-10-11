@@ -32,8 +32,12 @@ const Navbar: React.FC = () => {
         <IconContext.Provider value={{ color: variables.basicColour }}>
             <Nav>
                 <NavBarContainer $click={click}>
-                    <MobileContainer onClick={toggleClick} $click={click}>
-                        {click ? <FaTimes /> : <FaBars />}
+                    <MobileContainer $click={click}>
+                        {click ? (
+                            <FaTimes onClick={toggleClick} />
+                        ) : (
+                            <FaBars onClick={toggleClick} />
+                        )}
 
                         <NavLogo to="/" $click={click}>
                             <NavIcon src={LogoImage} />
@@ -42,8 +46,8 @@ const Navbar: React.FC = () => {
                         <ul>
                             <NavLinks
                                 to="#contact-form"
-                                $click={click}
                                 onClick={e => handleLinkClick({ e, target: '#contact-form' })}
+                                $click={click}
                             >
                                 Contact
                             </NavLinks>

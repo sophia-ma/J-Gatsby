@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 import {
     Button,
     createMuiTheme,
     createStyles,
     makeStyles,
     TextField,
-    Theme,
     ThemeProvider,
 } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
@@ -22,7 +21,7 @@ interface FormData {
     message: string;
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
     createStyles({
         root: {
             display: 'flex',
@@ -30,6 +29,10 @@ const useStyles = makeStyles((theme: Theme) =>
             flexDirection: 'row',
             justifyContent: 'flex-end',
             width: '100%',
+        },
+        alert: {
+            width: '100%',
+            marginTop: '20px',
         },
     }),
 );
@@ -51,38 +54,38 @@ const theme = createMuiTheme({
 });
 
 const encode = (data: any) => {
-    console.log('data', data);
     return Object.keys(data)
-        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .map((key: string) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
         .join('&');
 };
 
 const ContactForm: React.FC = () => {
     const classes = useStyles();
+
     const { register, handleSubmit, errors, reset } = useForm<FormData>();
 
     const [state, setState] = useState({});
     const [feedbackMsg, setFeedbackMsg] = useState('');
 
-    const handleChange = (e: any) => setState({ ...state, [e.target.name]: e.target.value });
+    const handleChange = (e: any) =>
+        setState({ ...state, [e.target.name]: e.target.value });
 
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
     const onSubmit = (data: FormData, e: any) => {
         e.preventDefault();
+
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: encode({ 'form-name': 'contact', ...state }),
         })
-            .then(response => {
+            .then(() => {
                 setFeedbackMsg(`Thanks for reaching out. I'll get back to you soon.`);
                 reset();
-                console.log(response);
             })
-            .catch(error => {
+            .catch(() => {
                 setFeedbackMsg('Oops, something went wrong. The form could not be submitted.');
-                console.log(error);
             });
     };
 
@@ -103,8 +106,6 @@ const ContactForm: React.FC = () => {
                     color="primary"
                     onSubmit={handleSubmit(onSubmit)}
                 >
-                    {feedbackMsg && <Alert severity="success">{feedbackMsg}</Alert>}
-
                     <input type="hidden" name="form-name" value="contact" />
                     <TextField
                         id="name"
@@ -171,6 +172,12 @@ const ContactForm: React.FC = () => {
                     >
                         Send
                     </Button>
+
+                    {feedbackMsg && (
+                        <Alert severity="success" className={classes.alert}>
+                            {feedbackMsg}
+                        </Alert>
+                    )}
                 </form>
             </ThemeProvider>
         </div>

@@ -13,6 +13,7 @@ import {
 } from './NavbarElements';
 import LogoImage from 'images/logo.png';
 import { variables } from '../../styles/tokens';
+import './Navbar.scss';
 
 const Navbar: React.FC = () => {
     const [click, setClick] = useState(false);
@@ -34,9 +35,9 @@ const Navbar: React.FC = () => {
                 <NavBarContainer $click={click}>
                     <MobileContainer $click={click}>
                         {click ? (
-                            <FaTimes onClick={toggleClick} />
+                            <FaTimes className="navbar-svg-icon" onClick={toggleClick} />
                         ) : (
-                            <FaBars onClick={toggleClick} />
+                            <FaBars className="navbar-svg-icon" onClick={toggleClick} />
                         )}
 
                         <NavLogo to="/" $click={click}>

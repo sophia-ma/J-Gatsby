@@ -24,7 +24,7 @@ interface DataProps {
 const HaircutImages: React.FC = () => {
     const data: DataProps = useStaticQuery(graphql`
         query {
-            allContentfulAsset(filter: { file: { fileName: { regex: "/barber/" } } }) {
+            allContentfulAsset(filter: { title: {regex: "/haircut/"}}) {
                 edges {
                     node {
                         fluid {

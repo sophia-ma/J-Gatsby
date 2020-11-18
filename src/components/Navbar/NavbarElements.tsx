@@ -130,6 +130,7 @@ export const NavLinks = styled(Link)`
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
+    letter-spacing: 1.5px;
 
     &:hover {
         color: #fff;

@@ -18,13 +18,19 @@ const AboutMe: React.FC = () => {
         }
     `);
 
+    const options = {
+        renderText: (text: string) => {
+            return text.split('\n').flatMap((text, i) => [<br />, text]);
+        },
+    };
+
     return (
         <div id="about-me" className="about-me-container">
             <h1 className="heading">About me</h1>
             <img src={Divider} alt="divider" className="divider" />
 
             <div className="content">
-                {documentToReactComponents(data.contentfulAboutMeTextRichTextNode.json)}
+                {documentToReactComponents(data.contentfulAboutMeTextRichTextNode.json, options)}
             </div>
         </div>
     );

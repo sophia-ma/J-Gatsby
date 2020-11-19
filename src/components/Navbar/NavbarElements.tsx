@@ -42,7 +42,7 @@ export const NavBarContainer = styled.div`
     z-index: 1;
 
     @media screen and (max-width: ${breakpoints.md}) {
-        padding: ${({ $click }) => ($click ? '0 70px;' : '0')};
+        margin: ${({ $click }) => ($click ? '0 40px;' : '0')};
     }
 
     @media screen and (max-width: ${breakpoints.sm}) {
@@ -65,7 +65,7 @@ export const MobileContainer = styled.div`
         font-size: 1.8rem;
         cursor: pointer;
         z-index: 100;
-        margin: 0 40px;
+        margin: ${({ $click }) => ($click ? 0 : '0 40px')};
     }
 
     @media screen and (max-width: ${breakpoints.sm}) {

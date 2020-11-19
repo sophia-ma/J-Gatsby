@@ -8,10 +8,10 @@
 .main-section {
     background: $section-colour;
     color: $section-colour-text;
-    text-align: center;
+    text-align: justify;
     width: 100%;
     min-height: 83vh;
-    line-height: 30px;
+    line-height: 25px;
     padding: 60px 150px;
 
     @include respond-to(lg) {

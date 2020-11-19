@@ -40,10 +40,6 @@ const Navbar: React.FC = () => {
                             <FaBars className="navbar-svg-icon" onClick={toggleClick} />
                         )}
 
-                        <NavLogo to="/" $click={click}>
-                            <NavIcon src={LogoImage} />
-                        </NavLogo>
-
                         <ul>
                             <NavLinks
                                 to="#contact-form"

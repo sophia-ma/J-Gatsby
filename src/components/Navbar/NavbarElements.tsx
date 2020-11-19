@@ -60,11 +60,12 @@ export const MobileContainer = styled.div`
     @media screen and (max-width: ${breakpoints.md}) {
         display: flex;
         align-items: center;
-        justify-content: ${({ $click }) => ($click ? 'flex-start' : 'space-around')};
+        justify-content: ${({ $click }) => ($click ? 'flex-start' : 'space-between')};
         width: 100%;
         font-size: 1.8rem;
         cursor: pointer;
         z-index: 100;
+        margin: 0 40px;
     }
 
     @media screen and (max-width: ${breakpoints.sm}) {

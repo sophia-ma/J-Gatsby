@@ -1,3 +1,15 @@
 .logo {
     height: 70vh;
+
+    @include respond-to(md) {
+        height: 65vh;
+    }
+
+    @include respond-to(sm) {
+        height: 60vh;
+    }
+
+    @include respond-to(xs) {
+        height: 50vh;
+    }
 }

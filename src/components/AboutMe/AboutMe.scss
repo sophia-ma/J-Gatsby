@@ -7,28 +7,20 @@
         margin-top: 8px;
         font-size: 18px;
         @extend %section-content-max-width;
-    }
 
-    @include respond-to(lg) {
-        .content {
+        @include respond-to(lg) {
             font-size: 16px;
         }
-    }
 
-    @include respond-to(md) {
-        .content {
+        @include respond-to(md) {
             font-size: 15px;
         }
-    }
 
-    @include respond-to(sm) {
-        .content {
+        @include respond-to(sm) {
             font-size: 14px;
         }
-    }
 
-    @include respond-to(xs) {
-        .content {
+        @include respond-to(xs) {
             font-size: 13px;
         }
     }

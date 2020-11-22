@@ -14,23 +14,20 @@ export const Nav = styled.nav`
     justify-content: center;
     position: sticky;
     top: 0;
-    height: 190px;
-    font-size: 1rem;
+    height: ${variables.headerHeight};
     background: ${variables.backgroundColour};
     z-index: 999;
     user-select: none;
     text-transform: uppercase;
+    transition: 0.8s all ease;
 
-    @media screen and (max-width: ${breakpoints.md}) {
-        transition: 0.8s all ease;
-    }
 
     @media screen and (max-width: ${breakpoints.sm}) {
-        height: 130px;
+        height: ${variables.headerHeightSM};
     }
 
     @media screen and (max-width: ${breakpoints.xs}) {
-        height: 110px;
+        height: ${variables.headerHeightXS};
     }
 `;
 
@@ -57,20 +54,17 @@ export const NavBarContainer = styled.div`
 export const MobileContainer = styled.div`
     display: none;
 
-    @media screen and (max-width: ${breakpoints.md}) {
+    @media screen and (max-width: ${breakpoints.sm}) {
         display: flex;
         align-items: center;
         justify-content: ${({ $click }) => ($click ? 'flex-start' : 'space-between')};
         width: 100%;
-        font-size: 1.8rem;
+        font-size: 1.7rem;
         cursor: pointer;
         z-index: 100;
         margin: ${({ $click }) => ($click ? 0 : '0 40px')};
     }
 
-    @media screen and (max-width: ${breakpoints.sm}) {
-        font-size: 1.7rem;
-    }
 
     @media screen and (max-width: ${breakpoints.xs}) {
         font-size: 1.5rem;
@@ -104,7 +98,7 @@ export const NavMenu = styled.ul`
     list-style: none;
     text-align: center;
 
-    @media screen and (max-width: ${breakpoints.md}) {
+    @media screen and (max-width: ${breakpoints.sm}) {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -118,7 +112,7 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavItem = styled.li`
-    @media screen and (max-width: ${breakpoints.md}) {
+    @media screen and (max-width: ${breakpoints.sm}) {
         width: 100%;
     }
 `;
@@ -127,7 +121,7 @@ export const NavLinks = styled(Link)`
     display: flex;
     align-items: center;
     color: ${variables.basicColour};
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
@@ -138,14 +132,19 @@ export const NavLinks = styled(Link)`
         transition: all 0.3s ease;
     }
 
+    @media screen and (max-width: ${breakpoints.lg}) {
+        font-size: 1.1rem;
+    }
+
     @media screen and (max-width: ${breakpoints.md}) {
-        display: ${({ $click }) => ($click ? 'none' : 'table')};
-        text-align: center;
-        width: 100%;
-        padding: 2rem 0;
+        font-size: 1rem;
     }
 
     @media screen and (max-width: ${breakpoints.sm}) {
+        display: ${({ $click }) => ($click ? 'none' : 'table')};
+        text-align: center;
+        width: 100%;
+        padding: 1.8rem 0;
         font-size: 0.9rem;
     }
 

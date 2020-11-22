@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
     MobileContainer,
     Nav,
@@ -12,7 +13,7 @@ import {
     NavMenu,
 } from './NavbarElements';
 import LogoImage from 'images/logo.png';
-import { variables } from '../../styles/tokens';
+import { variables, matches } from '../../styles/tokens';
 import './Navbar.scss';
 
 const Navbar: React.FC = () => {
@@ -21,11 +22,24 @@ const Navbar: React.FC = () => {
 
     const scrollToElement = require('scroll-to-element');
 
+    const matchesXS = useMediaQuery(matches.xs);
+    const matchesSM = useMediaQuery(matches.sm);
+
     const handleLinkClick = ({ e, target }: { e: any; target: string }) => {
         if (typeof window !== 'undefined' && target.includes('#')) {
             e?.preventDefault();
 
-            scrollToElement(target, { offset: -190 });
+            const headerHeightXS = -parseInt(variables.headerHeightXS, 10);
+            const headerHeightSM = -parseInt(variables.headerHeightSM, 10);
+            const headerHeight = -parseInt(variables.headerHeight, 10);
+
+            if (matchesXS) {
+                scrollToElement(target, { offset: headerHeightXS });
+            } else if (matchesSM) {
+                scrollToElement(target, { offset: headerHeightSM });
+            } else {
+                scrollToElement(target, { offset: headerHeight });
+            }
         }
     };
 

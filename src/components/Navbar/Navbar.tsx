@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
@@ -15,6 +16,16 @@ import {
 import LogoImage from 'images/logo.png';
 import { variables, matches } from '../../styles/tokens';
 import './Navbar.scss';
+
+interface DataProps {
+    allContentfulUser: {
+        nodes: [
+            {
+                instagram: string;
+            },
+        ];
+    };
+}
 
 const Navbar: React.FC = () => {
     const [click, setClick] = useState(false);
@@ -42,6 +53,16 @@ const Navbar: React.FC = () => {
             }
         }
     };
+
+    const data: DataProps = useStaticQuery(graphql`
+        query {
+            allContentfulUser(filter: { owner: { eq: true } }) {
+                nodes {
+                    instagram
+                }
+            }
+        }
+    `);
 
     return (
         <IconContext.Provider value={{ color: variables.basicColour }}>
@@ -105,6 +126,12 @@ const Navbar: React.FC = () => {
                                 onClick={e => handleLinkClick({ e, target: '#contact-form' })}
                             >
                                 Contact
+                            </NavLinks>
+                        </NavItem>
+
+                        <NavItem style={{ display: !click ? 'none' : '' }}>
+                            <NavLinks $click={!click} to={data.allContentfulUser.nodes[0].instagram}>
+                                Instagram
                             </NavLinks>
                         </NavItem>
                     </NavMenu>

@@ -1,3 +1,5 @@
+$see-more: #808080;
+
 .about-me-container {
     @extend %section-align;
     @extend %section-heading;
@@ -22,6 +24,15 @@
 
         @include respond-to(xs) {
             font-size: 13px;
+        }
+
+        .see-more {
+            color: $see-more;
+            cursor: pointer;
+
+            &:hover {
+                color: darken($see-more, 10%)!important;
+            }
         }
     }
 }

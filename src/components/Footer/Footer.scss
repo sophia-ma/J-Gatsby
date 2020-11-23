@@ -30,4 +30,27 @@
         padding: 0 15px;
         font-size: 10px;
     }
+
+    .left-group {
+        display: flex;
+        align-items: center;
+    }
+
+    .instagram-icon {
+        font-size: 1.6rem;
+        fill: $basic-colour;
+        cursor: pointer;
+
+        &:hover {
+            fill: darken($basic-colour, 10%);
+        }
+
+        @include respond-to(sm) {
+            font-size: 1.3rem;
+        }
+
+        @include respond-to(xs) {
+            font-size: 1rem;
+        }
+    }
 }

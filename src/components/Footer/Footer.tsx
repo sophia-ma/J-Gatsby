@@ -1,5 +1,6 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
+import { FaInstagram } from 'react-icons/fa';
 import './Footer.scss';
 
 interface DataProps {
@@ -9,6 +10,7 @@ interface DataProps {
                 name: string;
                 owner: boolean;
                 developer: boolean;
+                instagram: string;
             },
         ];
     };
@@ -22,6 +24,7 @@ const Footer: React.FC = () => {
                     name
                     owner
                     developer
+                    instagram
                 }
             }
         }
@@ -31,8 +34,11 @@ const Footer: React.FC = () => {
 
     return (
         <div className="footer-container">
-            <span>
-                Copyright © {new Date().getFullYear()} {owner?.name}.
+            <span className="left-group">
+                Copyright © {new Date().getFullYear()} {owner?.name}. &nbsp;
+                <Link to={owner?.instagram || ''}>
+                    <FaInstagram className="instagram-icon" />
+                </Link>
             </span>
             <span>Developed by {developer?.name}</span>
         </div>

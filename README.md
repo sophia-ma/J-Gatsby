@@ -1,6 +1,7 @@
-<!-- AUTO-GENERATED-CONTENT:END -->
-# J-Gatsby
+##  About
+This is a personal biography website built with Gatsby.
 
-## 🧐 What's this?
-
-Biography Website
+##  Built with
+- Gatsby
+- GraphQL
+- Contentful

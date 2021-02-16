@@ -1,6 +1,5 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react';
-import { FaInstagram } from 'react-icons/fa';
 import './Footer.scss';
 
 interface DataProps {
@@ -34,12 +33,10 @@ const Footer: React.FC = () => {
 
     return (
         <div className="footer-container">
-            <span className="left-group">
-                Copyright © {new Date().getFullYear()} {owner?.name}. &nbsp;
-                <Link to={owner?.instagram || ''}>
-                    <FaInstagram className="instagram-icon" />
-                </Link>
+            <span>
+                Copyright © 2020 - {new Date().getFullYear()} {owner?.name}. All Rights Reserved.
             </span>
+
             <span>Developed by {developer?.name}</span>
         </div>
     );

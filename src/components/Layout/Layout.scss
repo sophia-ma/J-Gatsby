@@ -2,32 +2,31 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Helvetica;
 }
 
 .main-section {
-    background: $section-colour;
-    color: $section-colour-text;
+    background: $background-colour;
+    color: $primary-colour;
     text-align: justify;
     width: 100%;
     min-height: 83vh;
     line-height: 25px;
-    padding: 60px 150px;
+    padding: 60px 0px;
 
     @include respond-to(lg) {
-        padding: 50px 120px;
+        padding: 50px 0px;
     }
 
     @include respond-to(md) {
-        padding: 40px 100px;
+        padding: 40px 0px;
     }
 
     @include respond-to(sm) {
         line-height: 25px;
-        padding: 35px 80px;
+        padding: 35px 0px;
     }
 
     @include respond-to(xs) {
-        padding: 30px 50px;
+        padding: 30px 0px;
     }
 }

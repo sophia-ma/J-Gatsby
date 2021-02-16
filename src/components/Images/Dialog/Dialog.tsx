@@ -18,7 +18,7 @@ const useStyles = makeStyles(() =>
         closeButton: {
             position: 'absolute',
             right: 0,
-            color: variables.basicColour,
+            color: variables.primaryColour,
             backgroundColor: '#1a2b2c87',
             zIndex: 1000,
         },

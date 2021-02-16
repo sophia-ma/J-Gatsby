@@ -1,19 +1,13 @@
 @import 'variables', 'mixins';
 
 html {
-    background: $section-colour;
+    background: $background-colour;
 }
 
 body {
+    font-family: 'Rockwell';
     min-height: 100vh;
-    margin: 0;
-    position: relative;
-}
-
-body::after {
-    content: '';
-    display: block;
-    height: $footer-height;
+    padding: 52px;
 }
 
 %section-align {

@@ -7,13 +7,13 @@ import {
     MobileContainer,
     Nav,
     NavBarContainer,
-    NavIcon,
     NavLinks,
-    NavLogo,
     NavItem,
     NavMenu,
+    Header,
+    Title,
+    Description,
 } from './NavbarElements';
-import LogoImage from 'images/logo.png';
 import { variables, matches } from '../../styles/tokens';
 import './Navbar.scss';
 
@@ -21,6 +21,7 @@ interface DataProps {
     allContentfulUser: {
         nodes: [
             {
+                name: string;
                 instagram: string;
             },
         ];
@@ -28,8 +29,8 @@ interface DataProps {
 }
 
 const Navbar: React.FC = () => {
-    const [click, setClick] = useState(false);
-    const toggleClick = () => setClick(!click);
+    const [hamburgerMode, setHamburgerMode] = useState(false);
+    const toggleHamburgerMode = () => setHamburgerMode(!hamburgerMode);
 
     const scrollToElement = require('scroll-to-element');
 
@@ -58,44 +59,46 @@ const Navbar: React.FC = () => {
         query {
             allContentfulUser(filter: { owner: { eq: true } }) {
                 nodes {
+                    name
                     instagram
                 }
             }
         }
     `);
 
+    const { instagram, name } = data.allContentfulUser.nodes[0];
     return (
-        <IconContext.Provider value={{ color: variables.basicColour }}>
+        <IconContext.Provider value={{ color: variables.primaryColour }}>
             <Nav>
-                <NavBarContainer $click={click}>
-                    <MobileContainer $click={click}>
-                        {click ? (
-                            <FaTimes className="navbar-svg-icon" onClick={toggleClick} />
+                <NavBarContainer $hamburgerMode={hamburgerMode}>
+                    <Header $hamburgerMode={hamburgerMode}>
+                        <Title>{name}</Title>
+                        <Description>Tattooer & Barber</Description>
+                    </Header>
+
+                    <MobileContainer $hamburgerMode={hamburgerMode}>
+                        {hamburgerMode ? (
+                            <FaTimes className="navbar-svg-icon" onClick={toggleHamburgerMode} />
                         ) : (
-                            <FaBars className="navbar-svg-icon" onClick={toggleClick} />
+                            <FaBars className="navbar-svg-icon" onClick={toggleHamburgerMode} />
                         )}
 
                         <ul>
                             <NavLinks
                                 to="#contact-form"
                                 onClick={e => handleLinkClick({ e, target: '#contact-form' })}
-                                $click={click}
+                                $hamburgerMode={hamburgerMode}
+                                style={{ padding: 0 }}
                             >
                                 Contact
                             </NavLinks>
                         </ul>
                     </MobileContainer>
 
-                    <NavMenu onClick={click ? toggleClick : () => {}} $click={click}>
-                        <NavItem>
-                            <NavLinks
-                                to="#about-me"
-                                onClick={e => handleLinkClick({ e, target: '#about-me' })}
-                            >
-                                About me
-                            </NavLinks>
-                        </NavItem>
-
+                    <NavMenu
+                        onClick={hamburgerMode ? toggleHamburgerMode : () => {}}
+                        $hamburgerMode={hamburgerMode}
+                    >
                         <NavItem>
                             <NavLinks
                                 to="#tattoos"
@@ -103,12 +106,6 @@ const Navbar: React.FC = () => {
                             >
                                 Tattoos
                             </NavLinks>
-                        </NavItem>
-
-                        <NavItem>
-                            <NavLogo to="/" $click={click}>
-                                <NavIcon src={LogoImage} />
-                            </NavLogo>
                         </NavItem>
 
                         <NavItem>
@@ -121,17 +118,19 @@ const Navbar: React.FC = () => {
                         </NavItem>
 
                         <NavItem>
+                            <NavLinks to="#shop">Shop</NavLinks>
+                        </NavItem>
+
+                        <NavItem>
+                            <NavLinks to={instagram}>Social Media</NavLinks>
+                        </NavItem>
+
+                        <NavItem>
                             <NavLinks
                                 to="#contact-form"
                                 onClick={e => handleLinkClick({ e, target: '#contact-form' })}
                             >
                                 Contact
-                            </NavLinks>
-                        </NavItem>
-
-                        <NavItem style={{ display: !click ? 'none' : '' }}>
-                            <NavLinks $click={!click} to={data.allContentfulUser.nodes[0].instagram}>
-                                Instagram
                             </NavLinks>
                         </NavItem>
                     </NavMenu>

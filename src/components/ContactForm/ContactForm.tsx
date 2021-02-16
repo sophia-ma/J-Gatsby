@@ -43,7 +43,7 @@ const theme = createMuiTheme({
             main: variables.backgroundColour,
         },
         secondary: {
-            main: variables.basicColour,
+            main: variables.primaryColour,
         },
         error: {
             main: '#8a0a0a',
@@ -67,8 +67,7 @@ const ContactForm: React.FC = () => {
     const [state, setState] = useState({});
     const [feedbackMsg, setFeedbackMsg] = useState('');
 
-    const handleChange = (e: any) =>
-        setState({ ...state, [e.target.name]: e.target.value });
+    const handleChange = (e: any) => setState({ ...state, [e.target.name]: e.target.value });
 
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
@@ -166,7 +165,7 @@ const ContactForm: React.FC = () => {
                     />
                     <Button
                         variant="contained"
-                        color="primary"
+                        color="secondary"
                         type="submit"
                         endIcon={<SendIcon />}
                     >

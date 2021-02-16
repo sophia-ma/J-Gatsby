@@ -7,12 +7,11 @@ interface Breakpoints {
 
 interface Variables {
     backgroundColour: string;
-    sectionColour: string;
-    mainSectionsColourText: string;
-    basicColour: string;
+    primaryColour: string;
     headerHeight: string;
     headerHeightSM: string;
     headerHeightXS: string;
+    secondaryColour: string;
 }
 
 interface Matches {
@@ -23,18 +22,17 @@ interface Matches {
 }
 
 export const variables: Variables = {
-    backgroundColour: '#1a2b2c',
-    sectionColour: '#e0dede',
-    mainSectionsColourText: '#2a2b2c',
-    basicColour: '#d0b88d',
+    backgroundColour: '#fff',
+    primaryColour: '#2a2b2c',
     headerHeight: '190px',
     headerHeightSM: '110px',
     headerHeightXS: '80px',
+    secondaryColour: '#bbb',
 };
 
 export const breakpoints: Breakpoints = {
     xs: '480px',
-    sm: '768px',
+    sm: '769px',
     md: '992px',
     lg: '1200px',
 };

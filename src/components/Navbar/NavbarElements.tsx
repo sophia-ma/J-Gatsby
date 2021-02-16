@@ -4,25 +4,54 @@ import { variables, breakpoints } from '../../styles/tokens';
 
 declare module 'react' {
     interface HTMLAttributes<T> {
-        $click?: boolean;
+        $hamburgerMode?: boolean;
     }
 }
 
+export const Header = styled.header`
+    text-align: center;
+    text-transform: uppercase;
+`;
+
+export const Title = styled.div`
+    font-size: 47px;
+
+    @media screen and (max-width: ${breakpoints.md}) {
+        font-size: 42px;
+    }
+
+    @media screen and (max-width: ${breakpoints.sm}) {
+        font-size: 19px;
+    }
+`;
+
+export const Description = styled.div`
+    font-size: 40px;
+    margin: 10px 0px 20px;
+
+    @media screen and (max-width: ${breakpoints.md}) {
+        font-size: 35px;
+        margin: 8px 0px 16px;
+    }
+
+    @media screen and (max-width: ${breakpoints.sm}) {
+        font-size: 11px;
+        margin: 6px 0px 13px;
+    }
+`;
+
 export const Nav = styled.nav`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: ${variables.backgroundColour};
     position: sticky;
     top: 0;
     height: ${variables.headerHeight};
-    background: ${variables.backgroundColour};
     z-index: 999;
     user-select: none;
     text-transform: uppercase;
     transition: 0.8s all ease;
 
-
     @media screen and (max-width: ${breakpoints.sm}) {
+        position: relative;
         height: ${variables.headerHeightSM};
     }
 
@@ -32,14 +61,15 @@ export const Nav = styled.nav`
 `;
 
 export const NavBarContainer = styled.div`
-    display: flex;
-    justify-content: center;
     width: 100%;
-    height: 190px;
     z-index: 1;
+    background: ${variables.backgroundColour};
 
-    @media screen and (max-width: ${breakpoints.md}) {
-        margin: ${({ $click }) => ($click ? '0 40px;' : '0')};
+    @media screen and (min-width: ${breakpoints.sm}) {
+        text-align: center;
+        border-bottom: 1px solid ${variables.secondaryColour};
+        border-top: 1px solid ${variables.secondaryColour};
+        padding: 28px 0px;
     }
 
     @media screen and (max-width: ${breakpoints.sm}) {
@@ -57,57 +87,37 @@ export const MobileContainer = styled.div`
     @media screen and (max-width: ${breakpoints.sm}) {
         display: flex;
         align-items: center;
-        justify-content: ${({ $click }) => ($click ? 'flex-start' : 'space-between')};
+        justify-content: ${({ $hamburgerMode }) =>
+            $hamburgerMode ? 'flex-start' : 'space-between'};
         width: 100%;
         font-size: 1.7rem;
         cursor: pointer;
         z-index: 100;
-        margin: ${({ $click }) => ($click ? 0 : '0 40px')};
     }
-
 
     @media screen and (max-width: ${breakpoints.xs}) {
         font-size: 1.5rem;
     }
 `;
 
-export const NavLogo = styled(Link)`
-    display: ${({ $click }) => ($click ? 'none' : 'flex')};
-    align-items: center;
-    justify-self: center;
-    cursor: pointer;
-    text-decoration: none;
-`;
-
-export const NavIcon = styled.img`
-    height: 160px;
-    margin: 50px;
-
-    @media screen and (max-width: ${breakpoints.sm}) {
-        height: 100px;
-    }
-
-    @media screen and (max-width: ${breakpoints.xs}) {
-        height: 80px;
-    }
-`;
-
 export const NavMenu = styled.ul`
+    background: ${variables.backgroundColour};
     display: flex;
     align-items: center;
     list-style: none;
     text-align: center;
+    justify-content: center;
 
     @media screen and (max-width: ${breakpoints.sm}) {
         display: flex;
         flex-direction: column;
         width: 100%;
-        height: ${({ $click }) => ($click ? '100vh' : 'inherit')};
+        height: ${({ $hamburgerMode }) => ($hamburgerMode ? '100vh' : 'inherit')};
         position: absolute;
-        top: ${({ $click }) => ($click ? '100%' : '-1000px')};
+        top: ${({ $hamburgerMode }) => ($hamburgerMode ? '100%' : '-1000px')};
         left: 0;
         opacity: 1;
-        background: ${variables.backgroundColour};
+        justify-content: flex-start;
     }
 `;
 
@@ -120,35 +130,28 @@ export const NavItem = styled.li`
 export const NavLinks = styled(Link)`
     display: flex;
     align-items: center;
-    color: ${variables.basicColour};
-    font-size: 1.2rem;
+    color: ${variables.primaryColour};
+    font-size: 16px;
+    font-weight: 700;
     text-decoration: none;
     padding: 0.5rem 1rem;
     height: 100%;
     letter-spacing: 1.5px;
 
     &:hover {
-        color: #fff;
+        color: ${variables.secondaryColour};
         transition: all 0.3s ease;
     }
 
-    @media screen and (max-width: ${breakpoints.lg}) {
-        font-size: 1.1rem;
-    }
-
     @media screen and (max-width: ${breakpoints.md}) {
-        font-size: 1rem;
+        font-size: 14px;
     }
 
     @media screen and (max-width: ${breakpoints.sm}) {
-        display: ${({ $click }) => ($click ? 'none' : 'table')};
+        display: ${({ $hamburgerMode }) => ($hamburgerMode ? 'none' : 'table')};
         text-align: center;
         width: 100%;
-        padding: 1.8rem 0;
-        font-size: 0.9rem;
-    }
-
-    @media screen and (max-width: ${breakpoints.xs}) {
-        font-size: 0.8rem;
+        padding: 28px;
+        font-size: 13px;
     }
 `;

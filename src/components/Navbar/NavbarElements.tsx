@@ -65,13 +65,6 @@ export const NavBarContainer = styled.div`
     z-index: 1;
     background: ${variables.backgroundColour};
 
-    @media screen and (min-width: ${breakpoints.sm}) {
-        text-align: center;
-        border-bottom: 1px solid ${variables.secondaryColour};
-        border-top: 1px solid ${variables.secondaryColour};
-        padding: 28px 0px;
-    }
-
     @media screen and (max-width: ${breakpoints.sm}) {
         height: 130px;
     }
@@ -107,6 +100,12 @@ export const NavMenu = styled.ul`
     list-style: none;
     text-align: center;
     justify-content: center;
+
+    @media screen and (min-width: ${breakpoints.sm}) {
+        border-bottom: 1px solid ${variables.secondaryColour};
+        border-top: 1px solid ${variables.secondaryColour};
+        padding: 20px 0px;
+    }
 
     @media screen and (max-width: ${breakpoints.sm}) {
         display: flex;

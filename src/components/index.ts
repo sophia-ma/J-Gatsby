@@ -3,7 +3,6 @@ export { default as Logo } from './Logo/Logo';
 export { default as NavBar } from './Navbar/Navbar';
 export { default as Layout } from './Layout/Layout';
 export { default as Footer } from './Footer/Footer';
-export { default as AboutMe } from './AboutMe/AboutMe';
 export { default as TatooImages } from './Images/TattooImages';
 export { default as HaircutImages } from './Images/HaircutImages';
 export { default as ContactForm } from './ContactForm/ContactForm';

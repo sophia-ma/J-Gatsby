@@ -1,4 +1,4 @@
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import './Footer.scss';
 
@@ -9,7 +9,6 @@ interface DataProps {
                 name: string;
                 owner: boolean;
                 developer: boolean;
-                instagram: string;
             },
         ];
     };
@@ -23,7 +22,6 @@ const Footer: React.FC = () => {
                     name
                     owner
                     developer
-                    instagram
                 }
             }
         }

@@ -1,7 +1,21 @@
 let env = process.env.NODE_ENV || 'development';
 require('dotenv').config({ path: `./.env.${env}` });
 
+const website = require('./config/website.ts');
+const pathPrefix = website.pathPrefix === '/' ? '' : website.pathPrefix;
+
 module.exports = {
+    pathPrefix: website.pathPrefix,
+    siteMetadata: {
+        pathPrefix,
+        title: website.title,
+        titleAlt: website.titleAlt,
+        description: website.description,
+        banner: website.logo,
+        headline: website.headline,
+        siteLanguage: website.siteLanguage,
+        author: website.author,
+    },
     plugins: [
         `gatsby-plugin-react-helmet`,
         {

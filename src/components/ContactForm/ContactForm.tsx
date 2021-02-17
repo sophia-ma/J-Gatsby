@@ -40,9 +40,6 @@ const useStyles = makeStyles(() =>
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: variables.backgroundColour,
-        },
-        secondary: {
             main: variables.primaryColour,
         },
         error: {
@@ -165,7 +162,7 @@ const ContactForm: React.FC = () => {
                     />
                     <Button
                         variant="contained"
-                        color="secondary"
+                        color="primary"
                         type="submit"
                         endIcon={<SendIcon />}
                     >

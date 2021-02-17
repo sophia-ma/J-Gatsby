@@ -32,11 +32,12 @@ const SEO: React.FC<Props> = ({ lang, title, description }) => {
     const { name, website } = data.contentfulUser;
 
     const seo = {
-        title: defaults.title,
+        title: `${name} ${defaults.title}`,
         description: description ?? defaults.description,
         url: `${website}${pathname}`,
         siteLanguage: lang ?? defaults.siteLanguage,
         author: name ?? defaults.author,
+        headline: defaults.headline,
     };
 
     const schemaOrgWebPage = {
@@ -47,7 +48,7 @@ const SEO: React.FC<Props> = ({ lang, title, description }) => {
         inLanguage: seo.siteLanguage,
         mainEntityOfPage: website,
         description: seo.description,
-        name: `${name} | Tattooer & Barber`,
+        name: seo.title,
         author: {
             '@type': 'Person',
             name: seo.author,
@@ -75,14 +76,18 @@ const SEO: React.FC<Props> = ({ lang, title, description }) => {
                 lang: seo.siteLanguage,
             }}
             title={title}
-            titleTemplate={`%s | ${name} | Tattooer & Barber`}
+            titleTemplate={`%s | ${seo.title} | ${seo.headline} `}
         >
-            <link rel="canonical" href={seo.url} />
-            <meta name="description" content={seo.description} />
+            {seo.url && <link rel="canonical" href={seo.url} />}
+            {seo.description && <meta name="description" content={seo.description} />}
+
+            <meta property="og:type" content="website" />
 
             {seo.url && <meta property="og:url" content={seo.url} />}
             {seo.title && <meta property="og:title" content={seo.title} />}
             {seo.description && <meta property="og:description" content={seo.description} />}
+            {seo.title && <meta property="og:site_name" content={seo.title} />}
+
             <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>
         </Helmet>
     );
